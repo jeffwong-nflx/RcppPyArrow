@@ -6,7 +6,7 @@ Python developers that are building engineering systems may have the need to acc
 
 [Arrow](https://arrow.apache.org/) specifies a language agnostic columnar memory format for data, and its core is written in C++. The main class which is most similar to a dataframe is the [Table Class](https://arrow.apache.org/docs/cpp/classarrow_1_1_table.html). PyArrow is a python library that integrates with Arrow and exposes a [PyArrow Table](https://arrow.apache.org/docs/python/data.html) type. This class can wrap memory that was allocated by the C++ library. R can also wrap memory that was allocated in C++ through Rcpp. Given a pointer to an Arrow Table object, R can construct a dataframe. 
 
-Arrow provides a very convenient mechanism to exchange data between Python and R without having to write anything to disk, and without having to copy any memory. Python developers that needs to pass data through rpy2 more efficiently can create a PyArrow table object, then pass the address of the underlying Arrow Table object to R. R can receive the pointer and instantiate a data frame from it using `RcppPyArrow::RcppReceiveArrowTableFromPython`. This is an efficient transfer of data because it reuses the memory allocated by Arrow in both Python and R, so the transfer from Python to R happens without serialization and without copy. 
+Arrow provides a very convenient mechanism to exchange data between Python and R without having to write anything to disk, and without having to copy any memory. Python developers that need to pass data through rpy2 more efficiently can create a PyArrow table object, then pass the address of the underlying Arrow Table object to R. R can receive the pointer and instantiate a data frame from it using `RcppPyArrow::RcppReceiveArrowTableFromPython`. This is an efficient transfer of data because it reuses the memory allocated by Arrow in both Python and R, so the transfer from Python to R happens without serialization and without copy. 
 
 # Installation
 
@@ -27,7 +27,7 @@ If that is the case, then RcppPyArrow can be installed with the command
 # Usage
 
 Python developers can use parquet files, arrow files, or Pandas dataframes to make a PyArrow Table.
-Using rpy2.rinterface.SexpExtPtr we can get an external pointer to the PyArrow Table object. This pointer can be passed to `RcppPyArrow::RcppReceiveArrowTableFromPython`, which will return a R tibble.
+Using `rpy2.rinterface.SexpExtPtr` we can get an external pointer to the PyArrow Table object. This pointer can be passed to `RcppPyArrow::RcppReceiveArrowTableFromPython`, which will unwrap the underlying Arrow Table object and convert it to a R tibble.
 
 ```
 import numpy as np
