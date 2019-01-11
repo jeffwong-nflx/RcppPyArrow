@@ -1,0 +1,11 @@
+Package: RcppPyArrow
+Type: Package
+Title: Convert pyarrow tables to data.frames
+Version: 0.1.0
+Date: 2019-01-02
+Authors@R: person("Jeffrey", "Wong", email = "jeffreyw@netflix.com", role = c("aut", "cre"))
+Description: Convert pyarrow tables to R data.frames using the arrow library. Allows python and R developers to better coordinate work by standardizing on the arrow data format
+License: Apache License (>= 2.0)
+Imports: Rcpp (>= 1.0.0)
+LinkingTo: Rcpp
+RoxygenNote: 6.1.1

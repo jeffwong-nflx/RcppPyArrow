@@ -1,0 +1,4 @@
+PKG_CPPFLAGS=-I/usr/local/include -I/usr/include/python3.5 
+PKG_CXXFLAGS=
+CXX_STD=CXX11
+PKG_LIBS=-L/usr/local/lib/arrow -L/usr/lib -larrow -larrow_python -lpython3.5  -Wl,-rpath,/usr/local/lib
